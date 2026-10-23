@@ -1,12 +1,9 @@
-# Benchmarking Quantum Algorithms in the Cloud: A Comparative Study of Classical vs. Simulated Quantum Approaches on AWS
+# QMonitor
 <br>
 
 > [!IMPORTANT]
 > **Note on AWS Billing & Cost Safety:** 
 > **Set Native AWS Budgets:** Always set hard budget alerts and spending limits directly inside your AWS Billing Dashboard on the AWS Console. QMonitor cannot requests when budget limit is hit and is only used as monitoring and logging tool.
-
-This repository contains the infrastructure for the
-**QWorld Qinternship 2026 - Project 26**
 
 It contains:
 - Logging
@@ -37,9 +34,6 @@ It contains:
 📂 assets
 └── 🖼️ Infrastructure.png
 ```
-
-## Infrastructure
-![Infrastructure Diagram](assets/Infrastructure.png)
 
 ### Terraform `.gitignore` File
 ```text
