@@ -5,6 +5,11 @@
 > **Note on AWS Billing & Cost Safety:** 
 > **Set Native AWS Budgets:** Always set hard budget alerts and spending limits directly inside your AWS Billing Dashboard on the AWS Console. QMonitor cannot requests when budget limit is hit and is only used as monitoring and logging tool.
 
+> [!IMPORTANT]
+> **Note on Cloud Monitoring Fallback:** 
+> If `monitor_cloud` detects missing or invalid AWS credentials, it will automatically and seamlessly fall back to executing a single local monitoring session, ensuring your experiment and logs are safely completed without redundant runtime.
+
+## Tool Structure
 It contains:
 - Logging
 - Monitoring
@@ -214,5 +219,113 @@ logger = Logger(
 logger.Log()
 ```
 
-**Note on Cloud Monitoring Fallback:** 
-If `monitor_cloud` detects missing or invalid AWS credentials, it will no longer crash or trigger interactive prompts. Instead, it will automatically and seamlessly fall back to executing a single local monitoring session, ensuring your experiment and logs are safely completed without redundant runtime.
+## SAMPLE JSON LOG
+```
+test2026-07-22T09:04:38.948732.json
+```
+```json
+{
+  "Config": {
+    "exp": {
+      "experiment_id": "QWorld_2026_8e58018e",
+      "benchmark_type": "Grover_Benchmark",
+      "timestamp": "2026-07-22T09:04:38.948286+00:00",
+      "simulator": "LocalSimulator",
+      "notes": "Local Grover Algorithm benchmark testing across varying database constraints."
+    },
+    "circ": {
+      "qubits": 0,
+      "depth": 0,
+      "shots": 0,
+      "gates": {
+        "H": 0,
+        "CNOT": 0,
+        "Others": {}
+      }
+    },
+    "metric": {
+      "circuit_fidelity_dR2": 0.0,
+      "shot_noise_converged_at": 0,
+      "cv_value": 0.0,
+      "local_vs_sv1_ks_pvalue": 0.0,
+      "gate_error_rate_tested": 0.0,
+      "fidelity_under_noise": 0.0,
+      "measurement_bias_pvalue": 0.0,
+      "runtime_seconds": 0.0,
+      "cloud_overhead_seconds": 0.0
+    },
+    "env": {
+      "braket_sdk_version": "1.124.0",
+      "python_version": "3.12.13",
+      "instance_type": ""
+    },
+    "gates": {
+      "H": 0,
+      "CNOT": 0,
+      "Others": {
+        "database_sizes": [
+          2,
+          4,
+          8
+        ],
+        "shots_config": {
+          "2": 1000,
+          "4": 1000,
+          "8": 1000
+        },
+        "optimal_iters": {
+          "2": 1,
+          "4": 1,
+          "8": 2
+        },
+        "trials": 3
+      }
+    }
+  },
+  "Metrics": {
+    "Local_Monitor": {
+      "Local Machine Experiment Metrics": {
+        "Local CPU Usage": [
+          0.0
+        ],
+        "Local RAM Usage": [
+          4.4
+        ],
+        "Local I/O Disk Latency": [
+          {
+            "read_count": 678661,
+            "write_count": 407218,
+            "read_bytes": 6075098624,
+            "write_bytes": 9306391552,
+            "read_time": 887302,
+            "write_time": 4961319,
+            "read_merged_count": 296572,
+            "write_merged_count": 365713,
+            "busy_time": 237686
+          }
+        ],
+        "Datetime": "2026-07-22 09:04:38.947769+00:00"
+      },
+      "Parameters": {
+        "database_sizes": [
+          2,
+          4,
+          8
+        ],
+        "shots_config": {
+          "2": 1000,
+          "4": 1000,
+          "8": 1000
+        },
+        "optimal_iters": {
+          "2": 1,
+          "4": 1,
+          "8": 2
+        },
+        "trials": 3
+      }
+    }
+  }
+}
+```
+
